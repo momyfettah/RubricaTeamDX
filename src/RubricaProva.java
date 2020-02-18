@@ -12,7 +12,7 @@ public class RubricaProva {
 				Db db1 = new Db("phonebook", "contacts", "root", "root");
 				db1.connect();
 				System.out.println("Hello! Welcome to the PhoneBook\n");
-				String[] values = {"name", "lastname", "number", "email", "favourites"};
+				String[] values = {"name", "lastname", "number", "favourites", "email"};
 				// db1.view(values);
 				// Scan input
 				in = new Scanner(System.in);
@@ -22,10 +22,10 @@ public class RubricaProva {
 				while (f1 == false) {
 					System.out.println(
 						"Please select an option: \n"
-						+ "[1] Show contacts\n"
-						+ "[2] Show favourites\n"
-						+ "[3] Search\n"
-						+ "[0] Exit"
+						+ "[1] Show contacts [1]\n"
+						+ "[2] Show favourites [2]\n"
+						+ "[3] Search [3]\n"
+						+ "[0] Exit [0]"
 					);
 					c1 = Integer.parseInt(in.nextLine());
 
@@ -151,9 +151,9 @@ class Db {
 			ResultSet res = cmd.executeQuery(query);
 			
 			while (res.next()) {
-				System.out.print("[" + res.getString("id") + "] ");
+				System.out.print("(ID: " + res.getString("id") + ") ");
 				for(int i = 0; i < fields.length; i++) {
-					System.out.print(res.getString(fields[i]) + " ");
+					System.out.print(res.getString(fields[i]) + ( (i == fields.length-1) ? "" : "\t\t|\t" ));
 				}
 				System.out.println();
 			}
