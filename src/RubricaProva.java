@@ -144,6 +144,8 @@ class Db {
 	}
 	
 	void view(String[] fields) {
+		System.out.println("ID: \t NAME: \t\t\t LASTNAME:  \t\t NUMBER: \t\t    FAVOURITES: \t\t\t EMAIL: ");
+		System.out.println(" ");
 		String query = "SELECT * FROM " + table + " ORDER BY " + fields[0];
 		
 		try {
@@ -151,7 +153,7 @@ class Db {
 			ResultSet res = cmd.executeQuery(query);
 			
 			while (res.next()) {
-				System.out.print("(ID: " + res.getString("id") + ") ");
+				System.out.print("" + res.getString("id") + "   | \t ");
 				for(int i = 0; i < fields.length; i++) {
 					System.out.print(res.getString(fields[i]) + ( (i == fields.length-1) ? "" : "\t\t|\t" ));
 				}
